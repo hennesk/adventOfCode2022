@@ -1,8 +1,7 @@
 const fs = require('fs');
 
-const filePath = './input.txt'
-fs.readFile(filePath, 'utf8', (err, data) => {
-  let totalpoints = [0,0]
+fs.readFile('./input.txt', 'utf8', (err, data) => {
+  const totalpoints = [0,0]
   const matches = data.split('\n')
   for (let match of matches) {
     const matchArray = match.split(' ')
@@ -30,8 +29,7 @@ function partTwo(match) {
       'Z': 7
     }
   }
-  const enemyMove = match[0]
-  const desiredOutcome = match[1]
+  const [enemyMove, desiredOutcome] = match
   return whatToDo[enemyMove][desiredOutcome]
 }
 
@@ -53,9 +51,6 @@ function partOne(match) {
       'C':3+3,
     },
   }
-  const playerMove = match[1]
-  const enemyMove = match[0]
+  const [ enemyMove, playerMove ] = match
   return moves[playerMove][enemyMove]
 }
-
-
